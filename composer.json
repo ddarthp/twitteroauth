@@ -1,10 +1,19 @@
-{
-    "name": "ddarthp/twitteroauth",
+{       
+    "name": "ddarthp/twitteroauth",     
+    "type": "package",
+    "description": "Twitter oauth",
+    "keywords": ["Twitter API", "Twitter oAuth"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ddarthp",
+            "email": "diegofpineda@gmail.com"
+        }
+    ],
     "require": {
-        "php": ">=5.3.0",
-        "ext-curl": "*"
+        "php": ">=5.3.2",
     },
-    "autoload": {
+        "autoload": {
         "classmap": ["twitteroauth"]
     }
 }
