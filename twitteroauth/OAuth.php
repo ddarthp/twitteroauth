@@ -384,6 +384,7 @@ class OAuthRequest {
   public function get_normalized_http_url() {
     $parts = parse_url($this->http_url);
       
+      
   if(!isset($parts['port']) && $parts['scheme'] == "https" ){
      $parts['port']="443"; 
   }else if(!isset($parts["port"]) && $parts['scheme'] =="http"){
