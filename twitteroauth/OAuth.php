@@ -2,8 +2,10 @@
 // vim: foldmethod=marker
 
 /* Generic exception class
+ * It is conditionally declared to avoid conflicting with the one declared in the php OAuth extension.
  */
-if (!class_exists('OAuthException')) {
+
+if (!class_exists('OAuthException', false)) {
   class OAuthException extends Exception {
     // pass
   }
@@ -381,11 +383,17 @@ class OAuthRequest {
    */
   public function get_normalized_http_url() {
     $parts = parse_url($this->http_url);
-	
-    $port   = (array_key_exists('port', $parts) ? $parts['port'] : NULL);
+      
+  if(!isset(parts["port"]) && $parts['scheme'] =="https" ){
+     $parts['port']="443"; 
+  }elseif(!isset(parts["port"]) && $parts['scheme'] =="http"){
+      $parts['port']="80"; 
+  }
+          
+    $port = @$parts['port'];
     $scheme = $parts['scheme'];
-    $host   = $parts['host'];
-    $path   = (array_key_exists('path', $parts) ? $parts['path'] : NULL);
+    $host = $parts['host'];
+    $path = @$parts['path'];
 
     $port or $port = ($scheme == 'https') ? '443' : '80';
 
