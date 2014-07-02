@@ -386,7 +386,7 @@ class OAuthRequest {
       
   if(!isset($parts['port']) && $parts['scheme'] == "https" ){
      $parts['port']="443"; 
-  }else if(!isset(parts["port"]) && $parts['scheme'] =="http"){
+  }else if(!isset($parts["port"]) && $parts['scheme'] =="http"){
       $parts['port']="80"; 
   }
           
